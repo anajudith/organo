@@ -3,6 +3,7 @@ import Banner from "./componentes/Banner";
 import Formulario from "./componentes/Formulario";
 import Rodape from "./componentes/Rodape";
 import Time from "./componentes/Time";
+import Title from "./componentes/Title";
 
 function App() {
   const times = [
@@ -52,20 +53,24 @@ function App() {
     <div className="App">
       <Banner />
       <Formulario
-         times={times.map(time => time.nome)} 
-         aoColaboradorCadastrado={colaborador => 
-          aoNovoColaboradorAdicionado(colaborador)}
+        times={times.map((time) => time.nome)}
+        aoColaboradorCadastrado={(colaborador) =>
+          aoNovoColaboradorAdicionado(colaborador)
+        }
       />
+      <Title/>
       {times.map((time) => (
         <Time
           key={time.nome}
           nome={time.nome}
           corPrimaria={time.corPrimaria}
           corSegundaria={time.corSegundaria}
-          colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+          colaboradores={colaboradores.filter(
+            (colaborador) => colaborador.time === time.nome
+          )}
         />
       ))}
-      <Rodape/>
+      <Rodape />
     </div>
   );
 }
